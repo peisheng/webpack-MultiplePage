@@ -60,6 +60,9 @@ var config = {
 
 var pages = Object.keys(getEntry('src/views/**/*.html', 'src/views/'));
 pages.forEach(function(pathname) {
+	//console.log("==================:"+pathname);
+	//console.log("==================:"+pathname.replace("src\\views\\","").replace("\\","/"));
+	pathname=pathname.replace("src\\views\\","");
 	var conf = {
 		filename: '../views/' + pathname + '.html', //生成的html存放路径，相对于path
 		template: 'src/views/' + pathname + '.html', //html模板路径
@@ -75,6 +78,8 @@ pages.forEach(function(pathname) {
 		// 	collapseWhitespace: false //删除空白符与换行符
 		// }
 	};
+	//console.log(JSON.stringify(config.entry));
+
 	if (pathname in config.entry) {
 		conf.favicon = 'src/imgs/favicon.ico';
 		conf.inject = 'body';
